@@ -1,26 +1,38 @@
-
-
 import cmd,sys
 
 
 #Main Function
 canidates = {'1':"Rick Sanchez",'2':"Charlie Brown"}
 
+class voter:
+    def __init__(self, name, IDNum, vote):
+        self.name = ""
+        self.IDNum = 0
+        self.vote = ""
+
 def main():
     #canidates = {'1':"Rick Sanchez",'2':"Charlie Brown"}
-##    print("Welcome to your election ballot")
-##    name = getName()
-##    print(name)
-##    idNum = getID()
-##    print(idNum)
+    print("Welcome to your election ballot")
+    #person = voter("",0,0)
+    getName()
+    print(voter.name)
+    idNum = getID()
+    print(voter.IDNum)
     vote = getVote()
-    print(vote)
+    print(voter.vote)
+
+    print("")
+    print("Here are your inputs: ")
+    print("Voter Name: " + voter.name)
+    print("ID Number: " + voter.IDNum)
+    print("Selected Canidate: " + voter.vote)
+    print("")
 
 #gets name
 def getName():
     name = input("Please enter First and Last Name (ex:Jane Doe)\n")
     checkName(name)
-    return name
+    return
 
 #allow user to change name if wrong
 def checkName(text):
@@ -28,6 +40,7 @@ def checkName(text):
     if(check == 'n'):
         getName()
     elif(check == 'y'):
+        voter.name = text
         return
     else:
         checkName(text)
@@ -36,7 +49,7 @@ def checkName(text):
 def getID():
     idNum = input("Please enter you ID number\n")
     checkID(idNum)
-    return idNum
+    return
 
 #allow user to change id if wrong
 def checkID(text):
@@ -44,6 +57,7 @@ def checkID(text):
     if(check == 'n'):
         getID()
     elif(check == 'y'):
+        voter.IDNum = text
         return
     else:
         checkID(text)
@@ -63,8 +77,8 @@ def getVote():
         #print(type(vote2))
         if((vote2 == '1') or (vote2 == '2')):
             myVote = checkVote(vote2)
-            print(myVote)
-            return myVote
+            #print(myVote)
+            return
         print("Invalid Number")
         
 
@@ -74,11 +88,12 @@ def checkVote(num):
     if(check == 'n'):
         getVote()
     elif(check == 'y'):
-        confirm = num
-        print(confirm)
-        return confirm
+        #confirm = num
+        #print(confirm)
+        voter.vote = canidates[num]
+        return 
     else:
-        checkVote(text)
+        checkVote(num)
 
 #store vote into file?
 #or write into new file
@@ -88,5 +103,4 @@ def storeVote(name,ID,vote):
 
 if __name__=="__main__": 
     main() 
-
 
