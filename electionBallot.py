@@ -1,3 +1,4 @@
+
 import cmd,sys
 
 
@@ -28,26 +29,45 @@ def main():
     print("Selected Canidate: " + voter.vote)
     print("")
 
+    voteFile = open("voteCount.txt", "a")
+    voteFile.write("voter's information: " + voter.name + ", " + voter.IDNum + ", " + voter.vote)
+    voteFile.write(' \n')
+    voteFile.close()
+    
+    
+
 #gets name
 def getName():
-    name = input("Please enter First and Last Name (ex:Jane Doe)\n")
-    checkName(name)
+    firstName = input("Please enter First Name: \n")
+    while ((firstName == "") or (firstName.isspace())):
+        firstName = input("Please enter First Name: \n")
+        
+    lastName = input("Please enter Last Name: \n")
+    while ((lastName == "") or (lastName.isspace())):
+        lastName = input("Please enter Last Name: \n")
+    
+    checkName(firstName,lastName)
     return
 
 #allow user to change name if wrong
-def checkName(text):
-    check = input("Is " + text + " correct(y/n)? " )
+def checkName(text1,text2):
+    check = input("Is " + text1 + " " + text2 + " correct(y/n)? " )
     if(check == 'n'):
         getName()
     elif(check == 'y'):
-        voter.name = text
+        voter.name = text1 + " " + text2
         return
     else:
-        checkName(text)
+        checkName(text1,text2)
 
 #gets id
 def getID():
-    idNum = input("Please enter you ID number\n")
+    idNum = input("Please enter you 9 digit ID number\n")
+    while ((len(idNum) != 9) or (not(idNum.isnumeric()))):
+        print(" \n")
+        print("Invalid Number\n")
+        idNum = input("Please enter you 9 digit ID number\n")
+        
     checkID(idNum)
     return
 
@@ -103,4 +123,3 @@ def storeVote(name,ID,vote):
 
 if __name__=="__main__": 
     main() 
-
