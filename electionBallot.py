@@ -1,5 +1,6 @@
 
 import cmd,sys
+import datetime
 
 
 #Main Function
@@ -12,25 +13,36 @@ class voter:
         self.vote = ""
 
 def main():
+    startTime = datetime.datetime.now()
     #canidates = {'1':"Rick Sanchez",'2':"Charlie Brown"}
+    print("")
     print("Welcome to your election ballot")
+    print("")
+    print("The time you started your election ballot: " + startTime.strftime("%c"))
+    print("")
     #person = voter("",0,0)
     getName()
     print(voter.name)
+    print("")
     idNum = getID()
     print(voter.IDNum)
+    print("")
     vote = getVote()
     print(voter.vote)
+
+    finishTime = datetime.datetime.now()
 
     print("")
     print("Here are your inputs: ")
     print("Voter Name: " + voter.name)
     print("ID Number: " + voter.IDNum)
     print("Selected Canidate: " + voter.vote)
+    print("The time you finished your election ballot: " + finishTime.strftime("%c"))
     print("")
 
     voteFile = open("voteCount.txt", "a")
-    voteFile.write("voter's information: " + voter.name + ", " + voter.IDNum + ", " + voter.vote)
+    voteFile.write("voter's information: " + voter.name + ", " + voter.IDNum + ", " + voter.vote + ", ")
+    voteFile.write("Start time: " + startTime.strftime("%c") + ", " + "Finish time: " + finishTime.strftime("%c"))
     voteFile.write(' \n')
     voteFile.close()
     
