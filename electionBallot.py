@@ -40,7 +40,8 @@ def main():
     print("The time you finished your election ballot: " + finishTime.strftime("%c"))
     print("")
 
-    voteFile = open("voteCount.txt", "a")
+    #code below saves information into text file so that it may be encrypted
+    voteFile = open("voteCount_PlainText.txt", "a")
     voteFile.write("voter's information: " + voter.name + ", " + voter.IDNum + ", " + voter.vote + ", ")
     voteFile.write("Start time: " + startTime.strftime("%c") + ", " + "Finish time: " + finishTime.strftime("%c"))
     voteFile.write(' \n')
