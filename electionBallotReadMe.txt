@@ -6,7 +6,7 @@ Welcome to our Electronic Ballot System.
 
 In this system, you as the user can input your Full name, 9 Digit ID Number, and the candidate of your choice. There would be a real-time time stamp when you start the ballot and end. This way we would know if the file is tampered with after decryption. 
 
-This project uses both python code and a terminal to run. Mac users can use their terminal to run all code.
+This project uses both python code and a terminal with openssl commands to run. Mac users can use their terminal to run all code.
 
 Included Files:
 electionBallot.py
