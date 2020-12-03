@@ -48,5 +48,8 @@ User Instructions:
 	openssl dgst -sha256 voteCount_Decrypted.txt
 
    These lines should return the same hash value. If someone tampers with either text file, then the hashes will no longer match and the user will know 
-   if someone has interfered with the results.
+   if someone has interfered with the results. 
+   
+   Try it out for yourself: You as the user can open the decrypted file, change the vote, and rerun the hash code to see if the hash value is different
+   compared to the original plaintext file.
 
